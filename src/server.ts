@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { Request, Response} from 'express';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 import { send } from 'process';
 import { AsyncResource } from 'async_hooks';
@@ -32,8 +33,8 @@ import { AsyncResource } from 'async_hooks';
   /**************************************************************************** */
 
   //! END @TODO1
-  app.get("/filteredimage/", async( req, res) => {
-    const image_url = req.query.image_url;
+  app.get("/filteredimage/", async( req:Request, res:Response) => {
+    const image_url:string = req.query.image_url;
     
     if(!image_url){
       res.status(404).send("cannot find img_url, please insert again")
